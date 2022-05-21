@@ -11,7 +11,7 @@ export const infuraId = process.env.NEXT_PUBLIC_INFURA_ID as string;
 
 // Pick chains
 export const chains = defaultChains;
-export const defaultChain = chain.polygonMumbai;
+export const defaultChain = chain.rinkeby;
 
 // Set up connectors
 type ConnectorsConfig = { chainId?: number };

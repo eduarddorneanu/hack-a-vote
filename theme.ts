@@ -1,7 +1,9 @@
 import { extendTheme } from "@chakra-ui/react";
 
 // Here you can add custom colors
-const colors = {};
+const colors = {
+  accent: "#2C2A6C",
+};
 
 const fonts = {
   heading: "Archivo, sans-serif",

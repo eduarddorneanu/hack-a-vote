@@ -3,7 +3,6 @@ import {
   Button,
   Center,
   Flex,
-  Link,
   Menu,
   MenuButton,
   MenuDivider,
@@ -11,32 +10,15 @@ import {
   MenuList,
   Stack,
   useColorMode,
-  useColorModeValue,
   useDisclosure,
   Text,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Address } from "@web3-ui/components";
 import { useAccount, useDisconnect } from "wagmi";
 import WalletModal from "./modals/WalletModal";
 import AddressAvatar from "./Avatar";
-
-// use this when you need to navigate through the app
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
-);
+import Link from "next/link";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -53,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+    <Box bg="accent" px={4}>
       <WalletModal isOpen={isOpen} onClose={onClose} />
       <Flex
         h={16}
@@ -61,11 +43,14 @@ const Navbar = () => {
         alignItems={"center"}
         justifyContent={"space-between"}
       >
-        <Text fontWeight={700} fontSize="2xl">
-          Next Chakra Template
+        <Text fontWeight={700} fontSize="2xl" color="white">
+          Hack-A-Vote
         </Text>
 
         <Flex alignItems={"center"}>
+          <Link passHref href="/hackatons">
+            <Button marginRight="20px">View hackatons</Button>
+          </Link>
           <Stack direction={"row"} spacing={7} alignItems="center">
             {isLoading === false && data && data.address && (
               <Address value={data.address} shortened copiable />
